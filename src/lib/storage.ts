@@ -11,7 +11,7 @@ const getStorageInstance = (): IArtifactStorage => {
     case StorageType.Disk:
       return new DiskStorage({ cacheDir: config.DISK_STORAGE_PATH });
     case StorageType.GCS:
-      return new GoogleCloudStorage({ serviceAccountPath: config.GOOGLE_CLOUD_SERVICE_ACCOUNT, bucketName: config.GOOGLE_CLOUD_BUCKET_NAME });
+      return new GoogleCloudStorage({ bucketName: config.GOOGLE_CLOUD_BUCKET_NAME });
     case StorageType.AWS:
       return new AWSS3Storage({ bucketName: config.AWS_BUCKET_NAME, region: config.AWS_REGION });
     default:

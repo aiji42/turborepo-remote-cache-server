@@ -5,12 +5,12 @@ export class GoogleCloudStorage implements IArtifactStorage {
   private readonly storageClient: Storage;
   private readonly bucketName: string;
 
-  constructor({ serviceAccountPath, bucketName }: { serviceAccountPath: string; bucketName: string }) {
-    if (!serviceAccountPath || !bucketName) {
-      throw new Error('service account path and bucket name are required for Google Cloud Storage');
+  constructor({ bucketName }: { bucketName: string }) {
+    if (!bucketName) {
+      throw new Error('bucket name are required for Google Cloud Storage');
     }
 
-    this.storageClient = new Storage({ keyFilename: serviceAccountPath });
+    this.storageClient = new Storage();
     this.bucketName = bucketName;
 
     this.initBucket();
